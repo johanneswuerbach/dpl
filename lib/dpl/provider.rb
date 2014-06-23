@@ -66,8 +66,13 @@ module DPL
       context.shell("sudo apt-get -qq install #{name}", retry: true) if `which #{command}`.chop.empty?
     end
 
-    def self.pip(name, command = name)
-      context.shell("sudo pip install #{name}", retry: true) if `which #{command}`.chop.empty?
+    def self.pip(name, command = name, version = nil)
+      if version
+        context.shell("sudo pip uninstall -y #{name}") unless `which #{command}`.chop.empty?
+        context.shell("sudo pip install #{name}==#{version}", retry: true)
+      else
+        context.shell("sudo pip install #{name}", retry: true) if `which #{command}`.chop.empty?
+      end
     end
 
     def self.npm_g(name, command = name)

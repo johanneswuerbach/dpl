@@ -2,7 +2,7 @@ module DPL
   class Provider
     class Deis < Provider
       experimental 'Deis'
-      pip 'deis', 'deis'
+      pip 'deis', 'deis', '0.7.0'
 
       def needs_key?
         true
@@ -98,7 +98,7 @@ module DPL
       end
 
       def controller_url
-        "http://#{option(:controller)}"
+        "http://#{option(:controller)}:8000"
       end
     end
   end

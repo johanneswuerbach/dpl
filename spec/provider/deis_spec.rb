@@ -19,7 +19,7 @@ describe DPL::Provider::Deis do
   describe "#check_auth" do
     example do
       expect(provider.context).to receive(:shell).with(
-        'deis login http://deis.deisapps.com --username=travis --password=secret'
+        'deis login http://deis.deisapps.com:8000 --username=travis --password=secret'
       ).and_return(true)
       provider.check_auth
     end
