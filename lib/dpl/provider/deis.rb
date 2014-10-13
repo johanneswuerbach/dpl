@@ -2,7 +2,7 @@ module DPL
   class Provider
     class Deis < Provider
       experimental 'Deis'
-      pip 'deis', 'deis'
+      pip 'deis', 'deis', '0.14.1'
 
       def needs_key?
         true
